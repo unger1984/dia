@@ -39,7 +39,7 @@ For details, please, see example folder.
 
 ## Use with:
 
-* [dia_router](http://https://github.com/unger1984/dia_router) - Package to route request as koa-router.
+* [dia_router](https://github.com/unger1984/dia_router) - Package to route request as koa-router.
 
 ## Plans:
 
