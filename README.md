@@ -40,10 +40,10 @@ For details, please, see example folder.
 ## Use with:
 
 * [dia_router](https://github.com/unger1984/dia_router) - Package to route request as koa-router.
+* [dia_cors](https://github.com/unger1984/dia_cors) - Package for CORS middleware.
 
 ## Plans:
 
-* dia_cors - Package for CORS middleware. In progress.
 * dia_body - Package to parse request body. 
 * dia_static - Package to serve static files.
 
