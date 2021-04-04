@@ -13,6 +13,7 @@ typedef Middleware<T extends Context> = Future Function(
 class App<T extends Context> {
   late io.HttpServer _server;
   final List<Middleware<T>> _middlewares = [];
+  StreamSubscription? _listener;
 
   /// Add [middleware] to queue
   void use(Middleware<T> middleware) {
@@ -35,7 +36,7 @@ class App<T extends Context> {
             backlog: backlog,
             shared: shared,
           ));
-    _server.listen((request) async {
+    _listener = _server.listen((request) async {
       final T ctx = Context.createInstance(T, arguments: [request]);
       if (_middlewares.isNotEmpty) {
         final fn = _compose(_middlewares);
@@ -46,6 +47,11 @@ class App<T extends Context> {
         }
       }
     });
+  }
+
+  /// Close connection listener
+  void close() {
+    _listener?.cancel();
   }
 
   void _responseHttpError(T ctx, HttpError error) {

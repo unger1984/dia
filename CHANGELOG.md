@@ -1,3 +1,8 @@
+## 0.0.4
+
+- Add ```void close()``` method, that close connection
+- Add simple tests
+
 ## 0.0.3
 
 - Fix links and descriptions
