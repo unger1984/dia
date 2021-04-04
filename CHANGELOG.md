@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Change LICENSE
+
 ## 0.0.4
 
 - Add ```void close()``` method, that close connection
