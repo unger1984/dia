@@ -2,7 +2,7 @@ A simple dart http server in Koa2 style.
 
 This package is a wrapper over dart:io.HttpServer and allows you to create a queue of Middlewares. Each ```Middleware``` accepts a ```Context``` as its first argument, which can change, and as a second argument, a ```Future``` to the next ```Middleware```, which allows you to wait for the execution of the following ```Middleware``` after the current one.
 
-## Usage
+## Usage:
 
 A simple usage example:
 
@@ -35,13 +35,17 @@ Example ```throwError```:
 
 For details, please, see example folder.
 
-## Plans
+## Use with:
 
-* dia_router - Package to route request as koa-router. In progress.
+* [dia_router](http://https://github.com/unger1984/dia_router) - Package to route request as koa-router.
+
+## Plans:
+
+* dia_cors - Package for CORS middleware. In progress.
 * dia_body - Package to parse request body. 
 * dia_static - Package to serve static files.
 
-## Features and bugs
+## Features and bugs:
 
 I will be glad for any help and feedback!
 Please file feature requests and bugs at the [issue tracker][tracker].

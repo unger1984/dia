@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io' as io;
-import 'dart:mirrors';
 
 import 'context.dart';
 import 'http_error.dart';
@@ -37,7 +36,7 @@ class App<T extends Context> {
             shared: shared,
           ));
     _server.listen((request) async {
-      final T ctx = _createInstance(T, arguments: [request]);
+      final T ctx = Context.createInstance(T, arguments: [request]);
       if (_middlewares.isNotEmpty) {
         final fn = _compose(_middlewares);
         await fn(ctx, null);
@@ -84,27 +83,5 @@ class App<T extends Context> {
 
       return dispatch(0);
     };
-  }
-}
-
-/// create Context or custom Context instance
-dynamic _createInstance(Type type,
-    {Symbol? constructor,
-    List? arguments,
-    Map<Symbol, dynamic>? namedArguments}) {
-  constructor ??= const Symbol('');
-  arguments ??= const [];
-
-  var typeMirror = reflectType(type);
-  if (typeMirror is ClassMirror) {
-    if (namedArguments != null) {
-      return typeMirror
-          .newInstance(constructor, arguments, namedArguments)
-          .reflectee;
-    } else {
-      return typeMirror.newInstance(constructor, arguments).reflectee;
-    }
-  } else {
-    throw ArgumentError("Cannot create the instance of the type '$type'.");
   }
 }
