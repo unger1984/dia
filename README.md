@@ -1,5 +1,7 @@
 A simple dart http server in Koa2 style.
 
+#### !!!WARNING!!! Not production ready!
+
 This package is a wrapper over dart:io.HttpServer and allows you to create a queue of Middlewares. Each ```Middleware``` accepts a ```Context``` as its first argument, which can change, and as a second argument, a ```Future``` to the next ```Middleware```, which allows you to wait for the execution of the following ```Middleware``` after the current one.
 
 ## Usage:
