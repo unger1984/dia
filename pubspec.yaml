@@ -1,13 +1,10 @@
 name: dia
-description: A simple dart http server in Koa2 style. WARNING do not use it in production! It is alfa version and they need in more work!
-version: 0.0.6
+description: A simple dart http server in Koa2 style. Use with dia_router, dia_static, dia_body and other packages
+version: 0.0.7
 homepage: https://github.com/unger1984/dia
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-
-#dependencies:
-#  path: ^1.7.0
 
 dev_dependencies:
   pedantic: ^1.9.0

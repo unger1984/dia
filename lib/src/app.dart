@@ -6,8 +6,8 @@ import 'context.dart';
 import 'http_error.dart';
 
 /// Typedef for Middleware
-typedef Middleware<T extends Context> = Future Function(
-    T ctx, FutureOr Function() next);
+typedef Middleware<T extends Context> = Future<void> Function(
+    T ctx, FutureOr<void> Function() next);
 
 /// Dia application class
 /// TODO: add documentations
@@ -42,21 +42,23 @@ class App<T extends Context> {
       if (_middlewares.isNotEmpty) {
         final fn = _compose(_middlewares);
         await fn(ctx, null);
-        Stream<List<int>>? stream;
-        if (ctx.body == null) {
-          stream = Stream.fromIterable([]);
-        } else if (ctx.body is String) {
-          stream = Stream.fromIterable([utf8.encode(ctx.body)]);
-        } else if (ctx.body is List) {
-          stream = Stream.fromIterable([ctx.body]);
-        } else if (ctx.body is Stream) {
-          stream = ctx.body;
-        } else {
-          request.response.write(ctx.body);
-        }
-        if (stream != null) await request.response.addStream(stream);
-        await request.response.close();
       }
+      Stream<List<int>>? stream;
+      if (ctx.body is String) {
+        stream = Stream.fromIterable([utf8.encode(ctx.body)]);
+      } else if (ctx.body is List) {
+        stream = Stream.fromIterable([ctx.body]);
+      } else if (ctx.body is Stream) {
+        stream = ctx.body;
+      }
+      if (stream != null) {
+        await request.response.addStream(stream);
+      } else {
+        request.response.headers.contentType = io.ContentType.html;
+        request.response.statusCode = 404;
+        request.response.write(HttpError(404).defaultBody);
+      }
+      await request.response.close();
     });
   }
 

@@ -1,3 +1,8 @@
+## 0.0.7
+
+- Add default 404 answer
+- Fix types
+
 ## 0.0.6
 
 - Add link to dia_static
