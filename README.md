@@ -1,8 +1,6 @@
 A simple dart http server in Koa2 style.
 
-#### !!!WARNING!!! Not production ready!
-
-This package is a wrapper over dart:io.HttpServer and allows you to create a queue of Middlewares. Each ```Middleware``` accepts a ```Context``` as its first argument, which can change, and as a second argument, a ```Future``` to the next ```Middleware```, which allows you to wait for the execution of the following ```Middleware``` after the current one.
+This package is a wrapper over dart:io.HttpServer and allows you to create a queue of Middlewares. Each `Middleware` accepts a `Context` as its first argument, which can change, and as a second argument, a `Future` to the next `Middleware`, which allows you to wait for the execution of the following `Middleware` after the current one.
 
 ## Usage:
 
@@ -24,10 +22,10 @@ main() {
 }
 ```
 
-Context contain getters and setters for ```Request``` fields response,  response.headers, response.headers.contentType, response.statusCode, that allow use it easy.
-Context contain method ```throwError``` that allow easy return HTTP errors by statusCode.
+Context contain getters and setters for `Request` fields response,  response.headers, response.headers.contentType, response.statusCode, that allow use it easy.
+Context contain method `throwError` that allow easy return HTTP errors by statusCode.
 
-Example ```throwError```:
+Example `throwError`:
 
 ```dart
     app.use((ctx,next) async {
@@ -42,10 +40,7 @@ For details, please, see example folder.
 * [dia_router](https://github.com/unger1984/dia_router) - Package to route request as koa-router.
 * [dia_cors](https://github.com/unger1984/dia_cors) - Package for CORS middleware.
 * [dia_body](https://github.com/unger1984/dia_body) - Package with the middleware for parse request body.
-
-## Plans:
-
-* dia_static - Package to serve static files.
+* [dia_static](https://github.com/unger1984/dia_static) - Package to serving static files.
 
 ## Features and bugs:
 

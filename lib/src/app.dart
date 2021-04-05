@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io' as io;
 
 import 'context.dart';
@@ -41,10 +42,20 @@ class App<T extends Context> {
       if (_middlewares.isNotEmpty) {
         final fn = _compose(_middlewares);
         await fn(ctx, null);
-        if (ctx.body != null) {
+        Stream<List<int>>? stream;
+        if (ctx.body == null) {
+          stream = Stream.fromIterable([]);
+        } else if (ctx.body is String) {
+          stream = Stream.fromIterable([utf8.encode(ctx.body)]);
+        } else if (ctx.body is List) {
+          stream = Stream.fromIterable([ctx.body]);
+        } else if (ctx.body is Stream) {
+          stream = ctx.body;
+        } else {
           request.response.write(ctx.body);
-          await request.response.close();
         }
+        if (stream != null) await request.response.addStream(stream);
+        await request.response.close();
       }
     });
   }
