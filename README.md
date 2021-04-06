@@ -1,4 +1,14 @@
-A simple dart http server in Koa2 style.
+# Dia
+
+<a href="https://pub.dartlang.org/packages/dia">  
+    <img src="https://img.shields.io/pub/v/dia.svg"  
+      alt="Pub Package" />  
+</a>
+<a href="https://github.com/unger1984/dia">  
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/unger1984/dia">
+</a>
+
+A simple dart http server like KoaJS.
 
 This package is a wrapper over dart:io.HttpServer and allows you to create a queue of Middlewares. Each `Middleware` accepts a `Context` as its first argument, which can change, and as a second argument, a `Future` to the next `Middleware`, which allows you to wait for the execution of the following `Middleware` after the current one.
 
@@ -7,10 +17,10 @@ This package is a wrapper over dart:io.HttpServer and allows you to create a que
 A simple usage example:
 
 ```dart
-import 'package:dia/dia.dart' as dia;
+import 'package:dia/dia.dart';
 
 main() {
-  final app = dia.App();
+  final app = App();
   
   app.use((ctx,next) async {
     ctx.body = 'Hello world!';
