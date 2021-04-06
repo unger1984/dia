@@ -14,6 +14,16 @@ This package allows you to create a http / http server in a couple of lines. Dia
 
 The main idea of the project is minimalism. The package contains only basic functionality, everything else is implemented in separate packages. This allows you to keep the project code clean and connect only those dependencies that are really needed in it.
 
+## Install:
+
+Add to pubspec.yaml in dependencies section this:
+
+```yaml
+    dia: ^0.0.8
+```
+
+Then run `pub get`
+
 ## Usage:
 
 A simple usage example:
