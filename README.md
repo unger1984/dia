@@ -10,7 +10,9 @@
 
 A simple dart http server like KoaJS.
 
-This package is a wrapper over dart:io.HttpServer and allows you to create a queue of Middlewares. Each `Middleware` accepts a `Context` as its first argument, which can change, and as a second argument, a `Future` to the next `Middleware`, which allows you to wait for the execution of the following `Middleware` after the current one.
+This package allows you to create a http / http server in a couple of lines. Dia creates a context from a bunch of request and response and passes it through the middleware.
+
+The main idea of the project is minimalism. The package contains only basic functionality, everything else is implemented in separate packages. This allows you to keep the project code clean and connect only those dependencies that are really needed in it.
 
 ## Usage:
 
@@ -32,7 +34,7 @@ main() {
 }
 ```
 
-Context contain getters and setters for `Request` fields response,  response.headers, response.headers.contentType, response.statusCode, that allow use it easy.
+Context contain getters and setters for `HttpRequest` fields: response,  response.headers, response.headers.contentType, response.statusCode, that allow use it easy.
 Context contain method `throwError` that allow easy return HTTP errors by statusCode.
 
 Example `throwError`:
@@ -43,7 +45,7 @@ Example `throwError`:
     });
 ```
 
-For details, please, see example folder.
+For more details, please, see example and test folder.
 
 ## Use with:
 

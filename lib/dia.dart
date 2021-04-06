@@ -1,6 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// Dia - simple KoaJS style library for create http/https servers on Dart.
 library dia;
 
 export 'src/app.dart';

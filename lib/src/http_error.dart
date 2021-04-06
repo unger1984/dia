@@ -1,5 +1,82 @@
 import 'dart:core';
 
+/// HttpError class
+/// Contain information about http error
+/// [status] - response code
+/// [message] - text message of code
+/// [error] - Error objects thrown in the case of a program failure
+/// [stackTrace] - [StackTrace] by all stack trace objects
+class HttpError extends Error {
+  final int _status;
+  late String _message;
+  late Error? _error;
+  late final StackTrace? _stackTrace;
+
+  /// Create [HttpError] object
+  /// [status] - response code
+  ///
+  /// Optional parameters
+  /// [message] - text message of code
+  /// [error] - Error objects thrown in the case of a program failure
+  /// [stackTrace] - [StackTrace] by all stack trace objects
+  HttpError(this._status,
+      {String? message, StackTrace? stackTrace, Error? error})
+      : assert(_status >= 400 && _status <= 600,
+            'The status should be an error code: 400-600') {
+    if (message != null) {
+      _message = message;
+    } else {
+      _message = _codes[_status] ?? 'Unknown error';
+    }
+    _stackTrace = stackTrace;
+    _error = error;
+  }
+
+  /// text message of code
+  String get message => _message;
+
+  /// response code
+  int get status => _status;
+
+  /// Error objects thrown in the case of a program failure
+  Error? get error => _error;
+
+  /// [StackTrace] by all stack trace objects
+  StackTrace? get stackTrace => _stackTrace;
+
+  /// Generate default HTML for this HTTP error
+  /// without fail contains information about [status] and [message]
+  /// additional, can contains information about [error] and [stackTrace]
+  String get defaultBody {
+    var res = '''<html lang="en">
+    <head>
+      <title>$_status $_message</title>
+    </head>
+    <body>
+      <h1>$_status $_message</h1>''';
+    if (_error != null) {
+      res += '<h2>$error</h2>';
+    }
+    if (_stackTrace != null) {
+      res += '''<h3>StackTrace</h3>
+      <p>
+      ''';
+      final stack = _stackTrace.toString().split('\n');
+      for (var index = 0; index < stack.length; index++) {
+        final str = stack[index];
+        res += '$str<br/>';
+      }
+
+      res += '</p>';
+    }
+
+    res += '''
+    </body>
+    </html>''';
+    return res;
+  }
+}
+
 /// http errors statuses and messages
 const _codes = <int, String>{
   100: 'Continue',
@@ -66,60 +143,3 @@ const _codes = <int, String>{
   510: 'Not Extended',
   511: 'Network Authentication Required'
 };
-
-/// HttpError class
-/// TODO: add documentation
-class HttpError extends Error {
-  final int _status;
-  late String _message;
-  late Error? _error;
-  late final StackTrace? _stackTrace;
-
-  HttpError(this._status,
-      {String? message, StackTrace? stackTrace, Error? error})
-      : assert(_status >= 400 && _status <= 600,
-            'The status should be an error code: 400-600') {
-    if (message != null) {
-      _message = message;
-    } else {
-      _message = _codes[_status] ?? 'Unknown error';
-    }
-    _stackTrace = stackTrace;
-    _error = error;
-  }
-
-  String get message => _message;
-  int get status => _status;
-  Error? get error => _error;
-  StackTrace? get stackTrace => _stackTrace;
-
-  /// return default html page for HTTP error
-  String get defaultBody {
-    var res = '''<html lang="en">
-    <head>
-      <title>$_status $_message</title>
-    </head>
-    <body>
-      <h1>$_status $_message</h1>''';
-    if (_error != null) {
-      res += '<h2>$error</h2>';
-    }
-    if (_stackTrace != null) {
-      res += '''<h3>StackTrace</h3>
-      <p>
-      ''';
-      final stack = _stackTrace.toString().split('\n');
-      for (var index = 0; index < stack.length; index++) {
-        final str = stack[index];
-        res += '$str<br/>';
-      }
-
-      res += '</p>';
-    }
-
-    res += '''
-    </body>
-    </html>''';
-    return res;
-  }
-}

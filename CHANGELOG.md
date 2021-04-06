@@ -1,3 +1,9 @@
+## 0.0.8
+
+- Add `listenOn` method to listen http/https requests an existing ServerSocket
+- Add more information to Readme
+- Add more dartdoc comments in code
+
 ## 0.0.7
 
 - Add default 404 answer
