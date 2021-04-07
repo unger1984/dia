@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:mirrors';
 
 import 'http_error.dart';
 
@@ -54,30 +53,5 @@ class Context {
       {String? message, StackTrace? stackTrace, Error? error}) {
     throw HttpError(status,
         message: message, stackTrace: stackTrace, error: error);
-  }
-
-  /// create Context or custom Context instance
-  /// necessary for internal use when you need to create an object
-  /// from an inherited class [Context]
-  /// TODO may be protected/private?
-  static dynamic createInstance(Type type,
-      {Symbol? constructor,
-      List? arguments,
-      Map<Symbol, dynamic>? namedArguments}) {
-    constructor ??= const Symbol('');
-    arguments ??= const [];
-
-    var typeMirror = reflectType(type);
-    if (typeMirror is ClassMirror) {
-      if (namedArguments != null) {
-        return typeMirror
-            .newInstance(constructor, arguments, namedArguments)
-            .reflectee;
-      } else {
-        return typeMirror.newInstance(constructor, arguments).reflectee;
-      }
-    } else {
-      throw ArgumentError("Cannot create the instance of the type '$type'.");
-    }
   }
 }

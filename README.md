@@ -19,7 +19,7 @@ The main idea of the project is minimalism. The package contains only basic func
 Add to pubspec.yaml in dependencies section this:
 
 ```yaml
-    dia: ^0.0.8
+    dia: ^0.1.0
 ```
 
 Then run `pub get`
@@ -53,6 +53,52 @@ Example `throwError`:
     app.use((ctx,next) async {
       ctx.throwError(401);
     });
+```
+
+You can use custom `Context` with additional fields and methods. In this case, you need to inherit from the base Context and pass the instance of context creation function to the App constructor.
+
+```dart
+/// Create custom context class
+class CustomContext extends Context{
+  String? additionalField;
+  CustomContext(HttpRequest request) : super(request);
+}
+
+void main() {
+  /// Create Dia instance 
+  final app = App((request) => CustomContext(request));
+
+  /// Add additionalField value
+  app.use((ctx, next) async {
+    ctx.additionalField = 'additional value';
+    await next();
+  });
+
+  /// final middleware to response
+  app.use((ctx, next) async {
+    ctx.contentType = ContentType.text;
+    ctx.body = ctx.additionalField;
+  });
+
+  /// Start server listen on localhost:8080
+  app
+      .listen('localhost', 8080)
+      .then((info) => print('Server started on http://localhost:8080'));
+}
+```
+
+You can start your server with SSL:
+
+```dart
+const serverKey = 'cert/key.pem';
+const certificateChain = 'cert/chain.pem';
+
+final serverContext = SecurityContext();
+serverContext
+    .useCertificateChainBytes(await File(certificateChain).readAsBytes());
+serverContext.usePrivateKey(serverKey, password: 'password');
+
+app.listen('localhost', 8444, securityContext: serverContext);
 ```
 
 For more details, please, see example and test folder.

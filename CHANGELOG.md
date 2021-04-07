@@ -1,3 +1,8 @@
+## 0.1.0
+
+- Remove dart:mirror, this now allows you to compile Dia in AOT mode.
+- Add more information to readme
+
 ## 0.0.8
 
 - Add `listenOn` method to listen http/https requests an existing ServerSocket

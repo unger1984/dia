@@ -19,6 +19,15 @@ class App<T extends Context> {
   late io.HttpServer _server;
   final List<Middleware<T>> _middlewares = [];
   StreamSubscription? _listener;
+  late Function(io.HttpRequest request) _createContext;
+
+  App([T Function(io.HttpRequest request)? createContext]) {
+    if (createContext != null) {
+      _createContext = createContext;
+    } else {
+      _createContext = (io.HttpRequest request) => Context(request);
+    }
+  }
 
   /// Add [Middleware] to App
   /// [Middleware] must be in the same [Context] as App
@@ -97,7 +106,7 @@ class App<T extends Context> {
   /// Private method for listen server stream
   Future<void> _listen() async {
     _listener = _server.listen((request) async {
-      final T ctx = Context.createInstance(T, arguments: [request]);
+      final ctx = _createContext(request);
       if (_middlewares.isNotEmpty) {
         final fn = _compose(_middlewares);
         await fn(ctx, null);

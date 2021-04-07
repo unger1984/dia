@@ -1,16 +1,16 @@
 import 'dart:io';
 
-import 'package:dia/dia.dart' as dia;
+import 'package:dia/dia.dart';
 
 /// Custom Context example
-class MyContext extends dia.Context {
+class MyContext extends Context {
   String? additionalField;
 
   MyContext(HttpRequest request) : super(request);
 }
 
 /// Middleware example
-dia.Middleware logger() => (ctx, next) async {
+Middleware logger() => (ctx, next) async {
       final start = DateTime.now();
       await next();
       final diff = DateTime.now().difference(start).inMicroseconds;
@@ -18,7 +18,7 @@ dia.Middleware logger() => (ctx, next) async {
     };
 
 void main() {
-  final app = dia.App<MyContext>();
+  final app = App((request) => MyContext(request));
 
   /// Add logger middleware
   app.use(logger());
@@ -40,7 +40,7 @@ void main() {
     ctx.body = ctx.additionalField;
   });
 
-  /// Start server listen on localhsot:8080
+  /// Start server listen on localhost:8080
   app
       .listen('localhost', 8080)
       .then((info) => print('Server started on http://localhost:8080'));

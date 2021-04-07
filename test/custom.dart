@@ -15,7 +15,7 @@ void main() {
   App<CustomContext>? dia;
 
   setUp(() {
-    dia = App<CustomContext>();
+    dia = App((request) => CustomContext(request));
     dia?.listen('localhost', 8080);
   });
 
