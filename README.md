@@ -19,7 +19,7 @@ The main idea of the project is minimalism. The package contains only basic func
 Add to pubspec.yaml in dependencies section this:
 
 ```yaml
-    dia: ^0.1.0
+    dia: ^0.1.1
 ```
 
 Then run `pub get`
@@ -85,6 +85,17 @@ void main() {
       .listen('localhost', 8080)
       .then((info) => print('Server started on http://localhost:8080'));
 }
+```
+
+Your can add handler to all Http errors:
+
+```dart
+app.use((ctx,next) async {
+  await next();
+  if(ctx.statusCode!=200){
+    //....
+  }
+});
 ```
 
 You can start your server with SSL:

@@ -4,12 +4,12 @@ import 'dart:core';
 /// Contain information about http error
 /// [status] - response code
 /// [message] - text message of code
-/// [error] - Error objects thrown in the case of a program failure
+/// [exception] - Exception objects thrown in the case of a program failure
 /// [stackTrace] - [StackTrace] by all stack trace objects
 class HttpError extends Error {
   final int _status;
   late String _message;
-  late Error? _error;
+  late Exception? _exception;
   late final StackTrace? _stackTrace;
 
   /// Create [HttpError] object
@@ -17,10 +17,10 @@ class HttpError extends Error {
   ///
   /// Optional parameters
   /// [message] - text message of code
-  /// [error] - Error objects thrown in the case of a program failure
+  /// [exception] - Exception objects thrown in the case of a program failure
   /// [stackTrace] - [StackTrace] by all stack trace objects
   HttpError(this._status,
-      {String? message, StackTrace? stackTrace, Error? error})
+      {String? message, StackTrace? stackTrace, Exception? exception})
       : assert(_status >= 400 && _status <= 600,
             'The status should be an error code: 400-600') {
     if (message != null) {
@@ -29,7 +29,7 @@ class HttpError extends Error {
       _message = _codes[_status] ?? 'Unknown error';
     }
     _stackTrace = stackTrace;
-    _error = error;
+    _exception = exception;
   }
 
   /// text message of code
@@ -39,14 +39,14 @@ class HttpError extends Error {
   int get status => _status;
 
   /// Error objects thrown in the case of a program failure
-  Error? get error => _error;
+  Exception? get exception => _exception;
 
   /// [StackTrace] by all stack trace objects
   StackTrace? get stackTrace => _stackTrace;
 
   /// Generate default HTML for this HTTP error
   /// without fail contains information about [status] and [message]
-  /// additional, can contains information about [error] and [stackTrace]
+  /// additional, can contains information about [exception] and [stackTrace]
   String get defaultBody {
     var res = '''<html lang="en">
     <head>
@@ -54,8 +54,8 @@ class HttpError extends Error {
     </head>
     <body>
       <h1>$_status $_message</h1>''';
-    if (_error != null) {
-      res += '<h2>$error</h2>';
+    if (_exception != null) {
+      res += '<h2>$_exception</h2>';
     }
     if (_stackTrace != null) {
       res += '''<h3>StackTrace</h3>

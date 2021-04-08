@@ -15,6 +15,9 @@ class Context {
   final HttpRequest _request;
   late dynamic body;
 
+  /// Error if ctxThrow
+  HttpError? error;
+
   /// Create base [Context] object
   /// takes [HttpRequest]
   Context(this._request) {
@@ -50,8 +53,9 @@ class Context {
 
   /// Throw HttpError with [status] code, [message] and [stackTrace] and [error]
   void throwError(int status,
-      {String? message, StackTrace? stackTrace, Error? error}) {
-    throw HttpError(status,
-        message: message, stackTrace: stackTrace, error: error);
+      {String? message, StackTrace? stackTrace, Exception? exception}) {
+    error = HttpError(status,
+        message: message, stackTrace: stackTrace, exception: exception);
+    throw error!;
   }
 }

@@ -11,10 +11,10 @@ class MyContext extends Context {
 
 /// Middleware example
 Middleware logger() => (ctx, next) async {
-      final start = DateTime.now();
+      var start = DateTime.now();
       await next();
-      final diff = DateTime.now().difference(start).inMicroseconds;
-      print('microseconds=$diff');
+      final time = DateTime.now().difference(start).inMilliseconds;
+      print('${ctx.request.method} ${ctx.request.uri.path} ${time}ms');
     };
 
 void main() {

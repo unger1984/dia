@@ -1,3 +1,9 @@
+## 0.1.1
+
+- Change Error field in HttpError class to Exception.
+- Add HttpError field in Context to handle http error before response
+- Add handling error example to readme
+
 ## 0.1.0
 
 - Remove dart:mirror, this now allows you to compile Dia in AOT mode.
