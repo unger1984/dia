@@ -159,8 +159,8 @@ class App<T extends Context> {
           if (error is HttpError) {
             _responseHttpError(ctx, error);
           } else {
-            final err =
-                HttpError(500, stackTrace: stackTrace, exception: error);
+            final err = HttpError(500,
+                stackTrace: stackTrace, exception: Exception(error));
             _responseHttpError(ctx, err);
           }
         });

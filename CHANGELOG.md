@@ -1,3 +1,7 @@
+# 0.1.2
+
+- Fix error handling
+
 ## 0.1.1
 
 - Change Error field in HttpError class to Exception.
