@@ -8,7 +8,9 @@ import 'http_error.dart';
 /// Middleware, it is an asynchronous function
 /// that accepts a [Context] and a future for the next function.
 typedef Middleware<T extends Context> = Future<void> Function(
-    T ctx, FutureOr<void> Function() next);
+  T ctx,
+  FutureOr<void> Function() next,
+);
 
 /// Dia application class
 /// The web server listens to the http / https port and applies
@@ -22,11 +24,8 @@ class App<T extends Context> {
   late Function(io.HttpRequest request) _createContext;
 
   App([T Function(io.HttpRequest request)? createContext]) {
-    if (createContext != null) {
-      _createContext = createContext;
-    } else {
-      _createContext = (io.HttpRequest request) => Context(request);
-    }
+    _createContext =
+        createContext ?? (io.HttpRequest request) => Context(request);
   }
 
   /// Add [Middleware] to App
@@ -71,14 +70,22 @@ class App<T extends Context> {
   /// isolates are bound to the port, then the incoming connections will be
   /// distributed among all the bound `HttpServer`s. Connections can be
   /// distributed over multiple isolates this way.
-  Future<void> listen(address, int port,
-      {io.SecurityContext? securityContext,
-      int backlog = 0,
-      bool v6Only = false,
-      bool shared = false}) async {
+  Future<void> listen(
+    address,
+    int port, {
+    io.SecurityContext? securityContext,
+    int backlog = 0,
+    bool v6Only = false,
+    bool shared = false,
+  }) async {
     _server = await (securityContext == null
-        ? io.HttpServer.bind(address, port,
-            backlog: backlog, v6Only: v6Only, shared: shared)
+        ? io.HttpServer.bind(
+            address,
+            port,
+            backlog: backlog,
+            v6Only: v6Only,
+            shared: shared,
+          )
         : io.HttpServer.bindSecure(
             address,
             port,
@@ -155,13 +162,17 @@ class App<T extends Context> {
           fn = next;
         }
         if (fn == null) return () => null;
+
         return fn(ctx, () => dispatch(currentCallIndex + 1))
             .catchError((error, stackTrace) {
           if (error is HttpError) {
             _responseHttpError(ctx, error);
           } else {
-            final err = HttpError(500,
-                stackTrace: stackTrace, exception: Exception(error));
+            final err = HttpError(
+              500,
+              stackTrace: stackTrace,
+              exception: Exception(error),
+            );
             _responseHttpError(ctx, err);
           }
         });

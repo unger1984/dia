@@ -19,15 +19,14 @@ class HttpError extends Error {
   /// [message] - text message of code
   /// [exception] - Exception objects thrown in the case of a program failure
   /// [stackTrace] - [StackTrace] by all stack trace objects
-  HttpError(this._status,
-      {String? message, StackTrace? stackTrace, Exception? exception})
-      : assert(_status >= 400 && _status <= 600,
+  HttpError(
+    this._status, {
+    String? message,
+    StackTrace? stackTrace,
+    Exception? exception,
+  }) : assert(_status >= 400 && _status <= 600,
             'The status should be an error code: 400-600') {
-    if (message != null) {
-      _message = message;
-    } else {
-      _message = _codes[_status] ?? 'Unknown error';
-    }
+    _message = message ?? _codes[_status] ?? 'Unknown error';
     _stackTrace = stackTrace;
     _exception = exception;
   }
@@ -42,6 +41,7 @@ class HttpError extends Error {
   Exception? get exception => _exception;
 
   /// [StackTrace] by all stack trace objects
+  @override
   StackTrace? get stackTrace => _stackTrace;
 
   /// Generate default HTML for this HTTP error
@@ -73,6 +73,7 @@ class HttpError extends Error {
     res += '''
     </body>
     </html>''';
+
     return res;
   }
 }
@@ -141,5 +142,5 @@ const _codes = <int, String>{
   508: 'Loop Detected',
   509: 'Bandwidth Limit Exceeded',
   510: 'Not Extended',
-  511: 'Network Authentication Required'
+  511: 'Network Authentication Required',
 };

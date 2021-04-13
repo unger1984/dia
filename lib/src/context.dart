@@ -52,10 +52,18 @@ class Context {
   }
 
   /// Throw HttpError with [status] code, [message] and [stackTrace] and [error]
-  void throwError(int status,
-      {String? message, StackTrace? stackTrace, Exception? exception}) {
-    error = HttpError(status,
-        message: message, stackTrace: stackTrace, exception: exception);
+  void throwError(
+    int status, {
+    String? message,
+    StackTrace? stackTrace,
+    Exception? exception,
+  }) {
+    error = HttpError(
+      status,
+      message: message,
+      stackTrace: stackTrace,
+      exception: exception,
+    );
     throw error!;
   }
 }
