@@ -19,7 +19,7 @@ The main idea of the project is minimalism. The package contains only basic func
 Add to pubspec.yaml in dependencies section this:
 
 ```yaml
-    dia: ^0.1.2
+    dia: ^0.1.3
 ```
 
 Then run `pub get`

@@ -1,3 +1,7 @@
+# 0.1.3
+
+- Fix error handling
+
 # 0.1.2
 
 - Fix error handling
