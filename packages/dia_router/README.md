@@ -3,7 +3,7 @@
       alt="Pub Package" />  
 </a>
 
-Router middleware for [Dia](https://github.com/unger1984/dia).
+Router middleware for [Dia](https://github.com/unger1984/dia/packages/dia).
 
 This package allows you to create separate middleware for specific urls and http methods
 
@@ -12,7 +12,7 @@ This package allows you to create separate middleware for specific urls and http
 Add to pubspec.yaml in dependencies section this:
 
 ```yaml
-    dia_router: ^0.1.6
+    dia_router: ^0.1.7
 ```
 
 Then run `pub get`
@@ -59,10 +59,10 @@ For more details, please, see example folder and test folder.
 
 ## Use with:
 
-* [dia](https://github.com/unger1984/dia) - A simple dart http server in Koa2 style.
-* [dia_cors](https://github.com/unger1984/dia_cors) - Package for CORS middleware.
-* [dia_body](https://github.com/unger1984/dia_body) - Package with the middleware for parse request body.
-* [dia_static](https://github.com/unger1984/dia_static) - Package to serving static files.
+* [dia](https://github.com/unger1984/dia/packages/dia) - A simple dart http server in Koa2 style.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - Package for CORS middleware.
+* [dia_body](https://github.com/unger1984/dia/packages/dia_body) - Package with the middleware for parse request body.
+* [dia_static](https://github.com/unger1984/dia/packages/dia_static) - Package to serving static files.
 
 ## Migration from 0.0.*
 
@@ -83,4 +83,4 @@ final app = App((req)=>ContextWithRouting(req));
 I will be glad for any help and feedback!
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/unger1984/dia_router/issues
+[tracker]: https://github.com/unger1984/dia/issues

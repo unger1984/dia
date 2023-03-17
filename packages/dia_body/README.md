@@ -4,7 +4,7 @@
 </a>
 
 
-The request body parser middleware for [Dia](https://github.com/unger1984/dia).
+The request body parser middleware for [Dia](https://github.com/unger1984/dia/packages/dia).
 Parse query, x-www-form-urlencoded, json and form-data params and uploaded files form HttpRequest.
 
 ## Install:
@@ -12,7 +12,7 @@ Parse query, x-www-form-urlencoded, json and form-data params and uploaded files
 Add to pubspec.yaml in dependencies section this:
 
 ```yaml
-    dia_body: ^0.1.2
+    dia_body: ^0.1.3
 ```
 
 Then run `pub get`
@@ -52,10 +52,10 @@ void main() {
 
 ## Use with:
 
-* [dia](https://github.com/unger1984/dia) - A simple dart http server in Koa2 style.
-* [dia_router](https://github.com/unger1984/dia_router) - Middleware like as koa_router.
-* [dia_cors](https://github.com/unger1984/dia_cors) - CORS middleware.
-* [dia_static](https://github.com/unger1984/dia_static) - Package to serving static files.
+* [dia](https://github.com/unger1984/dia/packages/dia) - A simple dart http server in Koa2 style.
+* [dia_router](https://github.com/unger1984/dia/packages/dia_router) - Middleware like as koa_router.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - CORS middleware.
+* [dia_static](https://github.com/unger1984/dia/packages/dia_static) - Package to serving static files.
 
 ## Migration from 0.0.*
 
@@ -77,4 +77,4 @@ final app = App((req) => ContextWithBody(req));
 I will be glad for any help and feedback!
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/unger1984/dia_body/issues
+[tracker]: https://github.com/unger1984/dia/issues
