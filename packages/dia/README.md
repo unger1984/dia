@@ -19,7 +19,7 @@ The main idea of the project is minimalism. The package contains only basic func
 Add to pubspec.yaml in dependencies section this:
 
 ```yaml
-    dia: ^0.1.3
+    dia: ^0.1.4
 ```
 
 Then run `pub get`
@@ -116,10 +116,10 @@ For more details, please, see example and test folder.
 
 ## Use with:
 
-* [dia_router](https://github.com/unger1984/dia_router) - Package to route request as koa-router.
-* [dia_cors](https://github.com/unger1984/dia_cors) - Package for CORS middleware.
-* [dia_body](https://github.com/unger1984/dia_body) - Package with the middleware for parse request body.
-* [dia_static](https://github.com/unger1984/dia_static) - Package to serving static files.
+* [dia_router](https://github.com/unger1984/dia/packages/dia_router) - Package to route request as koa-router.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - Package for CORS middleware.
+* [dia_body](https://github.com/unger1984/dia/packages/dia_body) - Package with the middleware for parse request body.
+* [dia_static](https://github.com/unger1984/dia/packages/dia_static) - Package to serving static files.
 
 ## Features and bugs:
 

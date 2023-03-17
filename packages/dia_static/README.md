@@ -3,14 +3,14 @@
       alt="Pub Package" />  
 </a>
 
-The middleware for [Dia](https://github.com/unger1984/dia) for serving static files.
+The middleware for [Dia](https://github.com/unger1984/dia/packages/dia) for serving static files.
 
 ## Install:
 
 Add to `pubspec.yaml` in dependencies section this:
 
 ```yaml
-    dia_static: ^0.1.1
+    dia_static: ^0.1.2
 ```
 
 Then run `pub get`
@@ -48,14 +48,14 @@ void main() {
 
 ## Use with:
 
-* [dia](https://github.com/unger1984/dia) - A simple dart http server in Koa2 style.
-* [dia_router](https://github.com/unger1984/dia_router) - Middleware like as koa_router.
-* [dia_body](https://github.com/unger1984/dia_body) - Package with the middleware for parse request body.
-* [dia_cors](https://github.com/unger1984/dia_cors) - Package for CORS middleware.
+* [dia](https://github.com/unger1984/dia/packages/dia/README.md) - A simple dart http server in Koa2 style.
+* [dia_router](https://github.com/unger1984/dia/packages/dia_router) - Middleware like as koa_router.
+* [dia_body](https://github.com/unger1984/dia/packages/dia_body) - Package with the middleware for parse request body.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - Package for CORS middleware.
 
 ## Features and bugs:
 
 I will be glad for any help and feedback!
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/unger1984/dia_static/issues
+[tracker]: https://github.com/unger1984/dia/issues
