@@ -52,10 +52,10 @@ void main() {
 
 ## Use with:
 
-* [dia](https://github.com/unger1984/dia/packages/dia) - A simple dart http server in Koa2 style.
-* [dia_router](https://github.com/unger1984/dia/packages/dia_router) - Middleware like as koa_router.
-* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - CORS middleware.
-* [dia_static](https://github.com/unger1984/dia/packages/dia_static) - Package to serving static files.
+* [dia](https://github.com/unger1984/dia/packages/dia/README.md) - A simple dart http server in Koa2 style.
+* [dia_router](https://github.com/unger1984/dia/packages/dia_router/README.md) - Middleware like as koa_router.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors/README.md) - CORS middleware.
+* [dia_static](https://github.com/unger1984/dia/packages/dia_static/README.md) - Package to serving static files.
 
 ## Migration from 0.0.*
 

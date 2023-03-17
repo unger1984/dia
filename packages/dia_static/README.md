@@ -49,9 +49,9 @@ void main() {
 ## Use with:
 
 * [dia](https://github.com/unger1984/dia/packages/dia/README.md) - A simple dart http server in Koa2 style.
-* [dia_router](https://github.com/unger1984/dia/packages/dia_router) - Middleware like as koa_router.
-* [dia_body](https://github.com/unger1984/dia/packages/dia_body) - Package with the middleware for parse request body.
-* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - Package for CORS middleware.
+* [dia_router](https://github.com/unger1984/dia/packages/dia_router/README.md) - Middleware like as koa_router.
+* [dia_body](https://github.com/unger1984/dia/packages/dia_body/README.md) - Package with the middleware for parse request body.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors/README.md) - Package for CORS middleware.
 
 ## Features and bugs:
 

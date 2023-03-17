@@ -59,10 +59,10 @@ For more details, please, see example folder and test folder.
 
 ## Use with:
 
-* [dia](https://github.com/unger1984/dia/packages/dia) - A simple dart http server in Koa2 style.
-* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors) - Package for CORS middleware.
-* [dia_body](https://github.com/unger1984/dia/packages/dia_body) - Package with the middleware for parse request body.
-* [dia_static](https://github.com/unger1984/dia/packages/dia_static) - Package to serving static files.
+* [dia](https://github.com/unger1984/dia/packages/dia/README.md) - A simple dart http server in Koa2 style.
+* [dia_cors](https://github.com/unger1984/dia/packages/dia_cors/README.md) - Package for CORS middleware.
+* [dia_body](https://github.com/unger1984/dia/packages/dia_body/README.md) - Package with the middleware for parse request body.
+* [dia_static](https://github.com/unger1984/dia/packages/dia_static/README.md) - Package to serving static files.
 
 ## Migration from 0.0.*
 
