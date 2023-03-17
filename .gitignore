@@ -16,3 +16,4 @@ doc/api/
 .idea
 *.iml
 
+**/doc/

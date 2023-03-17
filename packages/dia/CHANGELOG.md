@@ -1,3 +1,8 @@
+# 0.1.4
+
+- Update dependencies
+- Move to monorepo
+
 # 0.1.3
 
 - Fix error handling

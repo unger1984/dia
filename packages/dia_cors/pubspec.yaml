@@ -1,0 +1,15 @@
+name: dia_cors
+description: CORS middleware for Dia http server. Add CORS headers to response. Use it with 'dia' and 'dia_router' packages
+version: 0.1.2
+homepage: https://github.com/unger1984/dia
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+
+dependencies:
+  dia: ^0.1.3
+
+dev_dependencies:
+  dart_code_metrics: ^5.6.0
+  lints: ^2.0.1
+  test: ^1.23.1

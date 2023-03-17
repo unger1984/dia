@@ -1,0 +1,13 @@
+name: dia
+description: A simple dart http server in Koa2 style. Use with dia_router, dia_static, dia_body and other packages
+version: 0.1.4
+homepage: https://github.com/unger1984/dia
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+
+dev_dependencies:
+  dart_code_metrics: ^5.6.0
+  lints: ^2.0.1
+  test: ^1.23.1
+  http: ^0.13.5

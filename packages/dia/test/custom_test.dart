@@ -16,7 +16,7 @@ void main() {
 
   setUp(() {
     dia = App((request) => CustomContext(request));
-    dia?.listen('localhost', 8080);
+    dia?.listen('localhost', 8081);
   });
 
   tearDown(() async {
@@ -33,7 +33,7 @@ void main() {
       ctx.body = ctx.field;
     });
 
-    final response = await http.get(Uri.parse('http://localhost:8080'));
+    final response = await http.get(Uri.parse('http://localhost:8081'));
     expect(response.statusCode, equals(200));
     expect(response.body, equals('custom'));
   });
