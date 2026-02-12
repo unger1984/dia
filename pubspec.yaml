@@ -49,3 +49,6 @@ melos:
     test:
       run: dart run melos run test:select
       description: Run all Flutter tests in this project.
+    publish:
+      run: dart run melos publish --no-dry-run --yes
+      description: Publish all unpublished package versions to pub.dev.
