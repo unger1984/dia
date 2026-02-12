@@ -1,3 +1,8 @@
+# 0.1.6
+
+- Workspace/monorepo support (Melos 7)
+- Dependency constraints updated for publication
+
 # 0.1.4
 
 - Update dependencies

@@ -1,3 +1,7 @@
+## 0.1.4
+
+- Depend on dia ^0.1.6
+
 ## 0.1.3
 
 - Update dependencies
@@ -10,7 +14,6 @@
 ## 0.1.1
 
 - Update Dia version to 0.1.3
-- Add dart_code_metrics
 - Fix if body empty
 
 ## 0.1.0

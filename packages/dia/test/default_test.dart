@@ -7,9 +7,12 @@ import '../lib/dia.dart';
 void main() {
   App? dia;
 
-  setUp(() {
+  setUp(() async {
     dia = App();
-    dia?.listen('localhost', 8080);
+    dia?.use((ctx, next) async {
+      ctx.body = 'success';
+    });
+    await dia?.listen('localhost', 0);
   });
 
   tearDown(() async {
@@ -17,11 +20,8 @@ void main() {
   });
 
   test('Dia serve', () async {
-    dia?.use((ctx, next) async {
-      ctx.body = 'success';
-    });
-
-    final response = await http.get(Uri.parse('http://localhost:8080'));
+    final port = dia!.port;
+    final response = await http.get(Uri.parse('http://localhost:$port'));
     expect(response.statusCode, equals(200));
     expect(response.body, equals('success'));
   });

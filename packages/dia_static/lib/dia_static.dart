@@ -1,6 +1,4 @@
 /// [Middleware] for Dia that allows you to serving static files
-library dia_static;
-
 import 'dart:io';
 import 'dart:math' as math;
 

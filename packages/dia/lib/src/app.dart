@@ -105,6 +105,10 @@ class App<T extends Context> {
     await _listen();
   }
 
+  /// The port the server is listening on.
+  /// When [listen] was called with port 0, this returns the actual port assigned.
+  int get port => _server.port;
+
   /// Close HTTP/HTTPS listener
   void close() {
     _listener?.cancel();

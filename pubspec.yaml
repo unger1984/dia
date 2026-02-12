@@ -1,7 +1,51 @@
 name: dia_workspace
+publish_to: none
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ">=3.9.0 <4.0.0"
+
+workspace:
+  - packages/dia
+  - packages/dia_body
+  - packages/dia_cors
+  - packages/dia_router
+  - packages/dia_static
 
 dev_dependencies:
-  melos: ^3.0.0
+  melos: ^7.4.0
+
+melos:
+  repository: https://github.com/unger1984/dia
+  command:
+    version:
+      branch: main
+      releaseUrl: true
+      fetchTags: false
+  scripts:
+    lint:all:
+      run: dart run melos run analyze && dart run melos run format
+      description: Run all static analysis checks.
+    analyze:
+      run: |
+        dart run melos exec -c 10 -- flutter analyze --fatal-infos
+      description: Run flutter analyze for all packages.
+    format:
+      run: dart run melos exec dart format . --fix
+      description: Run dart format for all packages.
+    format-check:
+      run: dart run melos exec dart format . --set-exit-if-changed
+      description: Run dart format checks for all packages.
+    markdown-check:
+      run: markdownlint . --ignore-path .markdownlintignore --config .markdownlint.yaml
+      description: Runs the markdown linting check.
+    markdown-fix:
+      run: markdownlint . --fix --ignore-path .markdownlintignore --config .markdownlint.yaml
+      description: Fixes the markdown linting errors.
+    test:select:
+      run: dart run melos exec -- flutter test
+      packageFilters:
+        dirExists: test
+      description: Run flutter test for selected packages.
+    test:
+      run: dart run melos run test:select
+      description: Run all Flutter tests in this project.

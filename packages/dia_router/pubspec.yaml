@@ -1,17 +1,18 @@
 name: dia_router
 description: A router for Dia. Allow add dia middlewares for handle different url addresses.
-version: 0.1.7
+version: 0.1.8
 homepage: https://github.com/unger1984/dia
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: '>=3.8.0 <4.0.0'
+
+resolution: workspace
 
 dependencies:
-  dia: ^0.1.3
+  dia: ^0.1.6
   path_to_regexp: ^0.4.0
 
 dev_dependencies:
-  dart_code_metrics: ^5.6.0
-  lints: ^2.0.1
-  test: ^1.23.1
-  http: ^0.13.5
+  lints: ^6.1.0
+  test: ^1.29.0
+  http: ^1.6.0

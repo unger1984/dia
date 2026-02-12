@@ -1,6 +1,4 @@
 /// [Middleware] for Dia that set CORS headers
-library dia_cors;
-
 import 'package:dia/dia.dart';
 
 /// [Middleware] for Dia that set CORS headers

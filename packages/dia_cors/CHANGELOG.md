@@ -1,3 +1,7 @@
+# 0.1.3
+
+- Depend on dia ^0.1.6
+
 # 0.1.2
 
 - Update dependencies
